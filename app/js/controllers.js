@@ -16,8 +16,14 @@ runAndApp.controller('TagBoardCtrl', ['$scope', function($scope) {
       ];
  }]);
 
-  runAndApp.controller('WorkoutCtrl', ['$scope', function($scope) {
-     $scope.header = 'Podgląd treningu';     
-  }]);
+runAndApp.controller('WorkoutCtrl', ['$scope', function($scope) {
+   $scope.header = 'Podgląd treningu';     
+}]);
 
+
+runAndApp.controller('SliderCtrl', function($scope, $http) {
+  $http.get('slider/slides.json').success(function(data) {
+    $scope.slides = data;
+  });
+});
 

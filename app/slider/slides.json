@@ -1,0 +1,32 @@
+ [
+   {
+     "id":1,
+     "class": "active",
+     "title":"Chwytliwy tytuł1",
+     "content":"Super długi opis1",
+     "href":"#",
+     "bttn":"Przycisk1",
+     "img":"https://runand.greeters.pl/themes/runand_theme/images/bg.png",
+     "alt":"Obrazek1"
+   },
+   {
+     "id":2,
+     "class": "",
+     "title":"Chwytliwy tytuł2",
+     "content":"Super długi opis2",
+     "href":"#",
+     "bttn":"Przycisk2",
+     "img":"https://runand.greeters.pl/themes/runand_theme/images/bg.png",
+     "alt":"Obrazek2"
+   },
+   {
+     "id":3,
+     "class": "",
+     "title":"Chwytliwy tytuł3",
+     "content":"Super długi opis3",
+     "href":"#",
+     "bttn":"Przycisk3",
+     "img":"https://runand.greeters.pl/themes/runand_theme/images/bg.png",
+     "alt":"Obrazek3"
+   }
+ ]  

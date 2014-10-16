@@ -4,12 +4,15 @@ body{
   overflow-x: hidden;
 }
 
-.menu:before {
-  content: "[";
+.navbar-logo{
+  height: 50px;
+  margin-top: -15px;
 }
 
-.menu:after {
-  content: "]";
+
+
+.menu:before, .menu:after {
+  content: "|;
 }
 
 .menu > li {
