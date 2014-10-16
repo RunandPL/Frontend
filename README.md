@@ -3,17 +3,11 @@
 Projekt oparty jest o szkielet aplikacji AngularJS - angular-seed [AngularJS](http://angularjs.org/).
 Dzięki czemu w łatwy sposób można połączyć naszą aplikację z bootstrapem oraz bowerem.
 
-## Getting Started
+## Jak zacząć
 
 Aby uruchomić aplikację wystarczy pobrać projekt i w przeglądarce otworzyć plik app/index.html. Należy także w tym pliku wskazać ścieżki do dodatkowych zależności, np. do bootstrapa lub jQuery.
 
-### Prerequisites
-
-You need git to clone the angular-seed repository. You can get it from
-[http://git-scm.com/](http://git-scm.com/).
-
-We also use a number of node.js tools to initialize and test angular-seed. You must have node.js and
-its package manager (npm) installed.  You can get them from [http://nodejs.org/](http://nodejs.org/).
+Można także projekt pobrać i zainstalować node.js, aby uruchomić npm-a, który uruchomi bowera. Wtedy zależności pobiorą się automatycznie.
 
 ### Utworzenie nowej aplikacji przy pomocy angular-seed
 
