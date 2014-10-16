@@ -87,9 +87,6 @@ npm update
 bower update
 ```
 
-## Linki
-
-[angular]: http://angularjs.org/
 [git]: http://git-scm.com/
 [bower]: http://bower.io
 [npm]: https://www.npmjs.org/
