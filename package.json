@@ -1,7 +1,7 @@
 {
   "name": "angular-seed",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A RunAnd AngularJS Project",
   "repository": "https://github.com/RunandPL/Frontend",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "postinstall": "bower install",
 
     "prestart": "npm install",
+
     "start": "http-server ./app -c-1",
 
     "pretest": "npm install",
