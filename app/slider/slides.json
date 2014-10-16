@@ -2,31 +2,31 @@
    {
      "id":1,
      "class": "active",
-     "title":"Chwytliwy tytuł1",
-     "content":"Super długi opis1",
+     "title":"RunAnd",
+     "content":"Pobierz aplikacje mobilną, dzięki której będziesz mógł ułożyć swój własny plan treningowy. Podejmij wyzwanie już dziś!",
      "href":"#",
-     "bttn":"Przycisk1",
-     "img":"https://runand.greeters.pl/themes/runand_theme/images/bg.png",
+     "bttn":"Pobierz",
+     "img":"/img/slider/3.png",
      "alt":"Obrazek1"
    },
    {
      "id":2,
      "class": "",
-     "title":"Chwytliwy tytuł2",
-     "content":"Super długi opis2",
+     "title":"Jesteś zwycięzcą",
+     "content":"Dopiero, gdy poznasz swoje możliwości, możesz na prawdę skutecznie próbować je podnieść. Dzięki nam osiągniesz szczyt swoich umiejętności.",
      "href":"#",
-     "bttn":"Przycisk2",
-     "img":"https://runand.greeters.pl/themes/runand_theme/images/bg.png",
+     "bttn":"",
+     "img":"/img/slider/1.png",
      "alt":"Obrazek2"
    },
    {
      "id":3,
      "class": "",
-     "title":"Chwytliwy tytuł3",
-     "content":"Super długi opis3",
+     "title":"Just run and be fit!",
+     "content":"Nowoczesny trening biegowy jest już na wyciągnięcie ręki. Zobacz, jak to robią inni i zaplanuj swoje własne, wyjątkowe trasy.",
      "href":"#",
-     "bttn":"Przycisk3",
-     "img":"https://runand.greeters.pl/themes/runand_theme/images/bg.png",
+     "bttn":"",
+     "img":"/img/slider/2.png",
      "alt":"Obrazek3"
    }
  ]  

@@ -25,9 +25,14 @@
   
     <ul class="workouts">
       <li ng-repeat="workout in workouts | filter:query | orderBy:orderProp" class="thumbnail">
-            <p>{{workout.name}}</p>
+        
+        <a href="#" class="thumb"><img ng-src="{{workout.img}}" style="padding: 5px;height:100px; float:left;"></a>
+        
+        <div style="margin-left: 100px;">
+        <a href="#">{{workout.name}}</a>
         <p>{{workout.description}}</p>
         <p>Dystans: {{workout.distance}} km</p>
+      </div>
       </li>
     </ul>
 
