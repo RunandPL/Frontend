@@ -1,10 +1,8 @@
 {
   "name": "angular-seed",
   "description": "A RunAnd AngularJS Project",
-
-  "version": "0.0.2",
+  "version": "0.2.0",
   "homepage": "https://github.com/angular/angular-seed/app",
-
   "license": "MIT",
   "private": true,
   "dependencies": {
@@ -13,6 +11,7 @@
     "angular-loader": "1.2.x",
     "angular-mocks": "~1.2.x",
     "html5-boilerplate": "~4.3.0",
-    "bootstrap": ">= 3.0.0"
+    "bootstrap": ">= 3.0.0",
+    "angular-google-maps": "~2.0.6"
   }
 }

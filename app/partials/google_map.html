@@ -1,0 +1,32 @@
+    <style type="text/css">
+         #map_canvas {
+            height: 100%;
+            width: 100%;
+            margin: 0px;
+        }
+
+        #map_canvas {
+            position: relative;
+          margin-top:10px;
+          height: 620px;
+        }
+
+        .angular-google-map-container {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style> 
+
+ <script>
+   $('#myCarousel').hide();
+  </script>
+
+<div id="map_canvas" ng-controller="mainCtrl" >  
+    <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
+        <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'">
+        </ui-gmap-markers>
+    </ui-gmap-google-map>
+</div>
