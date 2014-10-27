@@ -43,6 +43,14 @@ runAndApp.controller('mainCtrl',['$scope','GoogleMapApi'.ns(), '$http', function
   $http.get('routes/dummy_route.json').success(function(data) {
     $scope.map.polylines = data;
   });
+  
+   $scope.map.enable = function() {
+      $scope.map.polylines[0].editable = ! $scope.map.polylines[0].editable;
+  }
+   
+  $scope.map.saveRoute = function() {
+    alert("Mapa: " + JSON.stringify($scope.map.center));
+  }
         
         /*
         * GoogleMapApi is a promise with a

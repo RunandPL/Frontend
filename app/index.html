@@ -70,12 +70,14 @@
       </ol>
       <div class="carousel-inner">
         <div ng-repeat="slide in slides" class="item {{slide.class}}">
-          <img src="{{slide.img}}" alt="{{slide.alt}}">
+          <img ng-src="{{slide.img}}" alt="{{slide.alt}}"/>
           <div class="container">
             <div class="carousel-caption">
-              <h1>{{slide.title}}</h1>
-              <p>{{slide.content}}</p>
-              <p ng-if="slide.bttn"><a class="btn btn-lg btn-primary" href="{{slide.href}}" role="button">{{slide.bttn}}</a></p>
+              <h1 ng-bind="slide.title"></h1>
+              <p ng-bind="slide.content"></p>
+              <p ng-if="slide.bttn">
+                <a class="btn btn-lg btn-primary" ng-href="{{slide.href}}" role="button" ng-bind="slide.bttn"></a>
+              </p>
               
             </div>
           </div>

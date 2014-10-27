@@ -18,6 +18,19 @@
             right: 0;
             left: 0;
         }
+      
+      #editableButton, #saveButton{
+        position: absolute;
+        z-index: 10;
+        bottom: 20px;
+        left: 10px;
+        width: 100px;
+      }
+      
+      #saveButton{
+        bottom: 70px;
+      }
+      
     </style> 
 
  <script>
@@ -38,4 +51,8 @@ sdfsdfsdf
 </ui-gmap-polyline>
     
     </ui-gmap-google-map>
+  
+  <button id="editableButton" ng-click="map.enable()" class="btn btn-primary">Edycja</button>
+  <button id="saveButton" ng-click="map.saveRoute()" class="btn btn-primary">Zapisz trase</button>
+  
 </div>
