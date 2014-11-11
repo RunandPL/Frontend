@@ -1,0 +1,13 @@
+logs/*
+!.gitkeep
+node_modules
+node_modules/*
+bower_components/
+tmp
+.DS_Store
+.idea
+.jshintrc
+.bowerrc
+.travis.yml
+/app/gplus-quickstart-javascript
+/app/gplus-quickstart-javascript/*
