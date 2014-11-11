@@ -1,0 +1,88 @@
+[
+    {
+        "id": 1,
+        "path": [
+            {
+                "latitude": 54.4086326250163,
+                "longitude": 18.610104663848915
+            },
+            {
+                "latitude": 54.409041648954904,
+                "longitude": 18.610635930017907
+            },
+            {
+                "latitude": 54.40910254514612,
+                "longitude": 18.61085328609056
+            },
+            {
+                "latitude": 54.40918841749733,
+                "longitude": 18.611016998664923
+            },
+            {
+                "latitude": 54.40935391760528,
+                "longitude": 18.61122641209454
+            },
+            {
+                "latitude": 54.40950223008439,
+                "longitude": 18.611545696961457
+            },
+            {
+                "latitude": 54.40966302954622,
+                "longitude": 18.611988366671767
+            },
+            {
+                "latitude": 54.41017350972818,
+                "longitude": 18.612376118914653
+            },
+            {
+                "latitude": 54.41068398880181,
+                "longitude": 18.612720964933942
+            },
+            {
+                "latitude": 54.411334935323275,
+                "longitude": 18.61045342101295
+            },
+            {
+                "latitude": 54.41150430146093,
+                "longitude": 18.609759506463433
+            },
+            {
+                "latitude": 54.411973360560744,
+                "longitude": 18.608679340004073
+            },
+            {
+                "latitude": 54.41259458000862,
+                "longitude": 18.60760120239047
+            },
+            {
+                "latitude": 54.41275376765117,
+                "longitude": 18.60708094904021
+            },
+            {
+                "latitude": 54.41684614161236,
+                "longitude": 18.61196853634351
+            },
+            {
+                "latitude": 54.41762962976175,
+                "longitude": 18.61258637428284
+            }
+        ],
+        "stroke": {
+            "color": "#6060FB",
+            "weight": 3
+        },
+        "editable": false,
+        "draggable": true,
+        "geodesic": true,
+        "visible": true,
+        "icons": [
+            {
+                "icon": {
+                    "path": "google.maps.SymbolPath.BACKWARD_OPEN_ARROW"
+                },
+                "offset": "25px",
+                "repeat": "50px"
+            }
+        ]
+    }
+]
