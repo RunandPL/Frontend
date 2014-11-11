@@ -80,3 +80,37 @@ runAndApp.controller('AuthCtrl', ['$scope', 'GooglePlus', function ($scope, Goog
           });
      };
     }]);
+
+
+
+runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
+  $scope.user = {username: 'user1@email.com', password: 'test'};
+  $scope.message = '';
+  $scope.submit = function () {
+    $http
+      .post('http://89.79.234.30:3000/login', $scope.user)
+      .success(function (data, status, headers, config) {
+        $window.sessionStorage.token = data.token;
+        $scope.message = 'Welcome';
+        alert('Welcome');
+      })
+      .error(function (data, status, headers, config) {
+        // Erase the token if the user fails to log in
+        delete $window.sessionStorage.token;
+
+        // Handle login errors here
+        $scope.message = 'Error: Invalid user or password';
+        alert('Forbidden');
+      });
+    
+    
+  };
+
+  $scope.test = function () {
+    $http({url: '/api/restricted', method: 'GET'})
+    .success(function (data, status, headers, config) {
+      console.log(data.name); // Should log 'foo'
+    });
+  };
+  
+});

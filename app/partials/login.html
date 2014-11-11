@@ -2,3 +2,13 @@
   <br/><br/><br/>
     <a href="javascript:void(0);" ng-click="login()">Login with Google Plus</a>
   </div>
+
+
+<div ng-controller="UserCtrl">
+  <span></span>
+  <form ng-submit="submit()">
+    <input ng-model="user.username" type="text" name="user" placeholder="Username" />
+    <input ng-model="user.password" type="password" name="pass" placeholder="Password" />
+    <input type="submit" value="Login" />
+  </form>
+</div>

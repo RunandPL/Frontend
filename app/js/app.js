@@ -1,7 +1,7 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('myApp', [
+var myApp = angular.module('myApp', [
   'ngRoute',
   'myApp.filters',
   'myApp.services',
@@ -30,3 +30,36 @@ config(['$routeProvider', function($routeProvider) {
            apiKey: 'AIzaSyDYZUmgWM0OxaUF570G57rdVh8LYxiPTPw'
          });
     }]);
+
+myApp.factory('authInterceptor', function ($rootScope, $q, $window) {
+  return {
+    request: function (config) {
+      config.headers = config.headers || {};
+      if ($window.sessionStorage.token) {
+        config.headers.Authorization = 'Bearer ' + $window.sessionStorage.token;
+      }
+      return config;
+    },
+    response: function (response) {
+      if (response.status === 401) {
+        // handle the case where the user is not authenticated
+        alert("401");
+      }
+      return response || $q.when(response);
+    }
+  };
+});
+
+myApp.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.useXDomain = true;
+  delete $httpProvider.defaults.headers.common['X-Requested-With'];
+  
+  $httpProvider.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
+  
+}]);
+
+myApp.config(function ($httpProvider) {
+  $httpProvider.interceptors.push('authInterceptor');
+});
+
+
