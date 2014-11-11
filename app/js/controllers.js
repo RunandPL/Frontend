@@ -91,25 +91,41 @@ runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
       .post('http://89.79.234.30:3000/login', $scope.user)
       .success(function (data, status, headers, config) {
         $window.sessionStorage.token = data.token;
-        $scope.message = 'Welcome';
-        alert('Welcome');
+        console.log('Welcome');
       })
       .error(function (data, status, headers, config) {
         // Erase the token if the user fails to log in
         delete $window.sessionStorage.token;
 
         // Handle login errors here
-        $scope.message = 'Error: Invalid user or password';
-        alert('Forbidden');
-      });
-    
-    
+        console.log('Error: Invalid user or password');
+      });  
   };
 
-  $scope.test = function () {
-    $http({url: '/api/restricted', method: 'GET'})
+  $scope.test1 = function () {
+    $http({url: 'http://89.79.234.30:3000/api/connect', method: 'GET'})
     .success(function (data, status, headers, config) {
-      console.log(data.name); // Should log 'foo'
+      console.log(data);
+    });
+  };
+  
+    $scope.test2 = function () {
+    $http({url: 'http://89.79.234.30:3000/api/workout', method: 'GET'})
+    .success(function (data, status, headers, config) {
+      console.log(data);
+    });
+  };
+  
+  /*{
+    route: <<value>>, // string zlozony z doubli poprzedzielanych '?'.
+    lengthTime: <<value>>,
+    burnedCalories: <<value>>,
+    speedRate: <<value>>
+}*/
+    $scope.test3 = function () {
+    $http({url: 'http://89.79.234.30:3000/api/workout', method: 'POST'})
+    .success(function (data, status, headers, config) {
+      console.log(data);
     });
   };
   
