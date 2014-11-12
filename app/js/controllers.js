@@ -91,6 +91,12 @@ runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
       .post('http://89.79.234.30:3000/login', $scope.user)
       .success(function (data, status, headers, config) {
         $window.sessionStorage.token = data.token;
+        $window.sessionStorage.user = {
+          uid: 0,
+          name: "dummy_user_name",
+          mail: "dummy@mail.address",
+          role: "trainer"
+        }
         console.log('Welcome');
       })
       .error(function (data, status, headers, config) {
@@ -102,6 +108,14 @@ runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
       });  
   };
 
+  $scope.logout = function () {
+    delete $window.sessionStorage.token;
+    delete $window.sessionStorage.user;
+  }
+  
+  
+  
+  
   $scope.test1 = function () {
     $http({url: 'http://89.79.234.30:3000/api/connect', method: 'GET'})
     .success(function (data, status, headers, config) {
