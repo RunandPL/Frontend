@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl">
     <div class="container-fluid">
       <!-- Grupowanie "marki" i przycisku rozwijania mobilnego menu -->
       <div class="navbar-header">
@@ -15,18 +15,18 @@
     <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
       <ul class="nav navbar-nav navbar-left">
-        <li class="active"><a href="#/tag_board">Opublikowane trasy</a></li>
-        <li><a href="#/show_workout">Treningi na żywo</a></li>
-        <li><a href="#/dummy_map">Utwórz trase</a></li>
-        <li><a href="#/login">Zaloguj sie</a></li>
+         <li ng-repeat="item in items" >
+           <a ng-href="{{item.href}}">{{item.link}}</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">Zaloguj</a></li>
+        <li>
+          <a href="#" data-toggle="modal" data-target=".bs-example-modal-sm">Zaloguj</a>
+        </li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
   </nav>
-  <!--  -->
 
   <script>
   $('.navbar-left li a').click(function(e) {

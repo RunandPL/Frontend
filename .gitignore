@@ -11,3 +11,4 @@ tmp
 .travis.yml
 /app/gplus-quickstart-javascript
 /app/gplus-quickstart-javascript/*
+.gitignore.save 

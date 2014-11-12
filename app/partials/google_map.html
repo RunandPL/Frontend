@@ -37,6 +37,7 @@
    $('#myCarousel').hide();
   </script>
 
+
 <div id="map_canvas" ng-controller="mainCtrl" >  
   <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
         <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'">
@@ -45,7 +46,7 @@
     
      <ui-gmap-polyline ng-repeat="p in map.polylines" path="p.path" stroke="p.stroke" visible='p.visible'
 geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'>
-sdfsdfsdf
+
       {{ p.path }}
        
 </ui-gmap-polyline>

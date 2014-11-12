@@ -1,0 +1,22 @@
+[
+  { 
+    "href": "#/tag_board",
+    "link": "Opublikowane trasy",
+    "isActive": true
+  },
+    { 
+    "href": "#/show_workout",
+    "link": "Treningi na żywo",
+    "isActive": false
+  },
+  { 
+    "href": "#/dummy_map",
+    "link": "Utwórz trase",
+    "isActive": false
+  },
+  {
+    "href": "#/login",
+    "link": "Zaloguj sie",
+    "isActive": false
+  }
+]

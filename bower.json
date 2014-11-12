@@ -12,6 +12,8 @@
     "angular-mocks": "~1.2.x",
     "html5-boilerplate": "~4.3.0",
     "bootstrap": ">= 3.0.0",
-    "angular-google-maps": "~2.0.6"
+    "angular-google-maps": "~2.0.6",
+    "toastr": "~2.1.0",
+    "angular-google-plus": "~0.1.2"
   }
 }

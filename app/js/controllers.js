@@ -29,6 +29,9 @@ runAndApp.controller('WorkoutCtrl', ['$scope', function($scope) {
 
 /*Slider Controler - provide slides content*/
 runAndApp.controller('SliderCtrl', function($scope, $http) {
+  
+  //toastr.options.positionClass = "toast-top-full-width";
+  
   $http.get('slider/slides.json').success(function(data) {
     $scope.slides = data;
   });
@@ -67,16 +70,51 @@ runAndApp.controller('mainCtrl',['$scope','GoogleMapApi'.ns(), '$http', function
 
 
 
-runAndApp.controller('AuthCtrl', ['$scope', 'GooglePlus', function ($scope, GooglePlus) {
+runAndApp.controller('AuthCtrl', ['$scope', 'GooglePlus', '$window', '$http', function ($scope, GooglePlus, $window, $http) {
        $scope.login = function () {
+         
+           if($window.sessionStorage.getItem("user") !== null) {
+              toastr.warning('Nie możesz zalogowac sie dwukrotnie.', 'Błąd logowania!');
+               return;
+          }
+         
         GooglePlus.login().then(function (authResult) {
-            console.log(authResult);
-  
+            //console.log(authResult);
             GooglePlus.getUser().then(function (user) {
-                 console.log(user);
+                 //console.log(user);
+              $window.sessionStorage.token = "dummy.token";
+              $window.sessionStorage.user = JSON.stringify({
+                name: user.name,
+                email: user.email,
+                role: "trainer"
+              });
+        
+              var $params = {"username": user.email,"isTrainer": true};
+              
+      $http.post('http://89.79.234.30:3000/login/google', $params)
+      .success(function (data, status, headers, config) {
+        $window.sessionStorage.token = data.token;  
+        
+        
+         toastr.success('Witaj, '+ JSON.parse($window.sessionStorage.user).name+'!', 'Sukces!');
+      setTimeout(function(){ $window.location.reload();},1000);
+        
+        
+        
+      })
+      .error(function (data, status, headers, config) {
+        // Erase the token if the user fails to log in
+        delete $window.sessionStorage.token;
+        delete $window.sessionStorage.user;
+
+        // Handle login errors here
+        toastr.error('Nie udało sie zalogowac.', 'Błąd logowania!');
+        return;
+      }); 
+             
              });
         }, function (err) {
-          console.log(err);
+            toastr.error('Nie udało sie zalogowac.', 'Błąd Google+!');
           });
      };
     }]);
@@ -87,24 +125,32 @@ runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
   $scope.user = {username: 'user1@email.com', password: 'test'};
   $scope.message = '';
   $scope.submit = function () {
-    $http
-      .post('http://89.79.234.30:3000/login', $scope.user)
+    
+    if($window.sessionStorage.getItem("user") !== null) {
+              toastr.warning('Nie możesz zalogowac sie dwukrotnie.', 'Błąd logowania!');
+               return;
+     }
+    
+    $http.post('http://89.79.234.30:3000/login', $scope.user)
       .success(function (data, status, headers, config) {
         $window.sessionStorage.token = data.token;
-        $window.sessionStorage.user = {
+        $window.sessionStorage.user = JSON.stringify({
           uid: 0,
           name: "dummy_user_name",
           mail: "dummy@mail.address",
           role: "trainer"
-        }
-        console.log('Welcome');
+          });
+      
+         toastr.success('Witaj, '+ JSON.parse($window.sessionStorage.user).name+'!', 'Sukces!');
+          setTimeout(function(){ $window.location.reload();},1000);    
       })
       .error(function (data, status, headers, config) {
         // Erase the token if the user fails to log in
         delete $window.sessionStorage.token;
+        delete $window.sessionStorage.user;
 
         // Handle login errors here
-        console.log('Error: Invalid user or password');
+        toastr.error('Nie udało sie zalogowac.', 'Błąd logowania!');
       });  
   };
 
@@ -119,14 +165,14 @@ runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
   $scope.test1 = function () {
     $http({url: 'http://89.79.234.30:3000/api/connect', method: 'GET'})
     .success(function (data, status, headers, config) {
-      console.log(data);
+      //console.log(data);
     });
   };
   
     $scope.test2 = function () {
     $http({url: 'http://89.79.234.30:3000/api/workout', method: 'GET'})
     .success(function (data, status, headers, config) {
-      console.log(data);
+      //console.log(data);
     });
   };
   
@@ -139,8 +185,27 @@ runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
     $scope.test3 = function () {
     $http({url: 'http://89.79.234.30:3000/api/workout', method: 'POST'})
     .success(function (data, status, headers, config) {
-      console.log(data);
+      //console.log(data);
     });
   };
   
+});
+
+
+/*Navbar Controler - provide menu items*/
+
+runAndApp.controller('NavbarCtrl', function ($scope, $http, $window) {
+  
+  var menu_src;
+  if($window.sessionStorage.getItem("user") === null) {
+    menu_src = "open.json";
+  } else {
+    menu_src = JSON.parse($window.sessionStorage.user).role+".json"; 
+  }
+  
+  $http.get('navbar_provider/'+menu_src).success(function(data) {
+      $scope.items = data;
+    });
+   
+ 
 });

@@ -1,0 +1,17 @@
+[
+  { 
+    "href": "#/tag_board",
+    "link": "Opublikowane trasy",
+    "isActive": true
+  },
+  { 
+    "href": "#/dummy_map",
+    "link": "Utwórz trase",
+    "isActive": false
+  },
+  { 
+    "href": "#/login",
+    "link": "Zaloguj sie",
+    "isActive": false
+  }
+ ]
