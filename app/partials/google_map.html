@@ -2,13 +2,7 @@
          #map_canvas {
             height: 100%;
             width: 100%;
-            margin: 0px;
-        }
-
-        #map_canvas {
-            position: relative;
-          margin-top:10px;
-          height: 620px;
+           
         }
 
         .angular-google-map-container {
@@ -19,16 +13,16 @@
             left: 0;
         }
       
-      #editableButton, #saveButton{
-        position: absolute;
-        z-index: 10;
-        bottom: 20px;
-        left: 10px;
-        width: 100px;
+      #trainer_menu{
+        
+        margin-top: 20px;
+        margin-left: 40%;
       }
       
-      #saveButton{
-        bottom: 70px;
+      #players_directive{
+        
+        display: none;
+        
       }
       
     </style> 
@@ -37,23 +31,34 @@
    $('#myCarousel').hide();
   </script>
 
-
-<div id="map_canvas" ng-controller="mainCtrl" >  
+<div ng-controller="mainCtrl">
+<div id="map_canvas" >  
   <ui-gmap-google-map center="map.center" zoom="map.zoom" draggable="true" options="options" bounds="map.bounds">
         <ui-gmap-markers models="randomMarkers" coords="'self'" icon="'icon'">
         </ui-gmap-markers>
     
     
+  
      <ui-gmap-polyline ng-repeat="p in map.polylines" path="p.path" stroke="p.stroke" visible='p.visible'
 geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'>
 
-      {{ p.path }}
-       
+  
+   
 </ui-gmap-polyline>
     
     </ui-gmap-google-map>
   
-  <button id="editableButton" ng-click="map.enable()" class="btn btn-primary">Edycja</button>
-  <button id="saveButton" ng-click="map.saveRoute()" class="btn btn-primary">Zapisz trase</button>
+  
+ 
+
+</div>
+  
+  
+  <div id="trainer_menu">
+ 
+     <div class="wrap" trainer-directive ></div>
+     <div class="wrap" players-directive id="players_directive"></div>
+</div>
   
 </div>
+     

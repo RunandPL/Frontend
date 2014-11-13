@@ -7,8 +7,9 @@ var myApp = angular.module('myApp', [
   'myApp.services',
   'myApp.directives',
   'myApp.controllers',
-  'googleplus',
-  'google-maps'.ns()
+  'google-maps'.ns(),
+  'googleplus'
+  
 ]);
 
 myApp.config(['$routeProvider', function($routeProvider) {
@@ -27,7 +28,9 @@ myApp.config(['GoogleMapApiProvider'.ns(), function (GoogleMapApi) {
             v: '3.17',
             libraries: 'weather,geometry,visualization'
         });
-    }]).config(['GooglePlusProvider', function(GooglePlusProvider) {
+    }]);
+
+myApp.config(['GooglePlusProvider', function(GooglePlusProvider) {
          GooglePlusProvider.init({
            clientId: '551917479486-m0b7nr22i2rpigdsrdsrrmabvesh3fac.apps.googleusercontent.com',
            apiKey: 'AIzaSyDYZUmgWM0OxaUF570G57rdVh8LYxiPTPw'

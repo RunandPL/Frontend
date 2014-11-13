@@ -45,6 +45,7 @@ runAndApp.controller('mainCtrl',['$scope','GoogleMapApi'.ns(), '$http', function
 
   $http.get('routes/dummy_route.json').success(function(data) {
     $scope.map.polylines = data;
+    console.log(data);
   });
   
    $scope.map.enable = function() {
@@ -54,7 +55,38 @@ runAndApp.controller('mainCtrl',['$scope','GoogleMapApi'.ns(), '$http', function
   $scope.map.saveRoute = function() {
     alert("Mapa: " + JSON.stringify($scope.map.center));
   }
-        
+     
+  $scope.map.showPlayers = function() {
+    
+     $(this).notifyMe(
+        'right', // Position
+        'default', // Type
+        'Lista trenujących zawodników', // Title
+        'W tej chwili nikt nie trenuje...', // Description
+        200 // Velocity of notification
+    );
+    
+  }
+  
+   $scope.map.showConnector = function() {
+    
+     $(this).notifyMe(
+        'right', // Position
+        'default', // Type
+        'Wybierz zawodnika', // Title
+        '<div id="players_list"></div>', // Description
+        200, // Velocity of notification,
+       function(){alert("zamykam sie");}
+    );
+  
+     
+     $( "#players_list" ).append($( "#players_directive" ).show());
+     
+   
+     
+  }
+  
+  
         /*
         * GoogleMapApi is a promise with a
         * then callback of the google.maps object
@@ -70,126 +102,6 @@ runAndApp.controller('mainCtrl',['$scope','GoogleMapApi'.ns(), '$http', function
 
 
 
-runAndApp.controller('AuthCtrl', ['$scope', 'GooglePlus', '$window', '$http', function ($scope, GooglePlus, $window, $http) {
-       $scope.login = function () {
-         
-           if($window.sessionStorage.getItem("user") !== null) {
-              toastr.warning('Nie możesz zalogowac sie dwukrotnie.', 'Błąd logowania!');
-               return;
-          }
-         
-        GooglePlus.login().then(function (authResult) {
-            //console.log(authResult);
-            GooglePlus.getUser().then(function (user) {
-                 //console.log(user);
-              $window.sessionStorage.token = "dummy.token";
-              $window.sessionStorage.user = JSON.stringify({
-                name: user.name,
-                email: user.email,
-                role: "trainer"
-              });
-        
-              var $params = {"username": user.email,"isTrainer": true};
-              
-      $http.post('http://89.79.234.30:3000/login/google', $params)
-      .success(function (data, status, headers, config) {
-        $window.sessionStorage.token = data.token;  
-        
-        
-         toastr.success('Witaj, '+ JSON.parse($window.sessionStorage.user).name+'!', 'Sukces!');
-      setTimeout(function(){ $window.location.reload();},1000);
-        
-        
-        
-      })
-      .error(function (data, status, headers, config) {
-        // Erase the token if the user fails to log in
-        delete $window.sessionStorage.token;
-        delete $window.sessionStorage.user;
-
-        // Handle login errors here
-        toastr.error('Nie udało sie zalogowac.', 'Błąd logowania!');
-        return;
-      }); 
-             
-             });
-        }, function (err) {
-            toastr.error('Nie udało sie zalogowac.', 'Błąd Google+!');
-          });
-     };
-    }]);
-
-
-
-runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
-  $scope.user = {username: 'user1@email.com', password: 'test'};
-  $scope.message = '';
-  $scope.submit = function () {
-    
-    if($window.sessionStorage.getItem("user") !== null) {
-              toastr.warning('Nie możesz zalogowac sie dwukrotnie.', 'Błąd logowania!');
-               return;
-     }
-    
-    $http.post('http://89.79.234.30:3000/login', $scope.user)
-      .success(function (data, status, headers, config) {
-        $window.sessionStorage.token = data.token;
-        $window.sessionStorage.user = JSON.stringify({
-          uid: 0,
-          name: "dummy_user_name",
-          mail: "dummy@mail.address",
-          role: "trainer"
-          });
-      
-         toastr.success('Witaj, '+ JSON.parse($window.sessionStorage.user).name+'!', 'Sukces!');
-          setTimeout(function(){ $window.location.reload();},1000);    
-      })
-      .error(function (data, status, headers, config) {
-        // Erase the token if the user fails to log in
-        delete $window.sessionStorage.token;
-        delete $window.sessionStorage.user;
-
-        // Handle login errors here
-        toastr.error('Nie udało sie zalogowac.', 'Błąd logowania!');
-      });  
-  };
-
-  $scope.logout = function () {
-    delete $window.sessionStorage.token;
-    delete $window.sessionStorage.user;
-  }
-  
-  
-  
-  
-  $scope.test1 = function () {
-    $http({url: 'http://89.79.234.30:3000/api/connect', method: 'GET'})
-    .success(function (data, status, headers, config) {
-      //console.log(data);
-    });
-  };
-  
-    $scope.test2 = function () {
-    $http({url: 'http://89.79.234.30:3000/api/workout', method: 'GET'})
-    .success(function (data, status, headers, config) {
-      //console.log(data);
-    });
-  };
-  
-  /*{
-    route: <<value>>, // string zlozony z doubli poprzedzielanych '?'.
-    lengthTime: <<value>>,
-    burnedCalories: <<value>>,
-    speedRate: <<value>>
-}*/
-    $scope.test3 = function () {
-    $http({url: 'http://89.79.234.30:3000/api/workout', method: 'POST'})
-    .success(function (data, status, headers, config) {
-      //console.log(data);
-    });
-  };
-  
-});
 
 
 /*Navbar Controler - provide menu items*/
@@ -206,6 +118,27 @@ runAndApp.controller('NavbarCtrl', function ($scope, $http, $window) {
   $http.get('navbar_provider/'+menu_src).success(function(data) {
       $scope.items = data;
     });
+   
+ 
+});
+
+
+
+runAndApp.controller('takePlayersCtrl', function ($scope, $http, $window) {
+ 
+  $scope.email = "";
+  
+  $scope.sendInvitation = function() {
+    
+     toastr.warning('Nie podłączono jeszcze funkcji.', $scope.email);
+    
+  };
+ 
+});
+
+runAndApp.controller('playersListCtrl', function ($scope, $http, $window) {
+  
+  $scope.data = [{"name": "Lucjan","email": "example@example"}];
    
  
 });

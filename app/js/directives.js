@@ -28,3 +28,14 @@ var myDirectives = angular.module('myApp.directives', []);
 	}
 });
 
+  myDirectives.directive('trainerDirective',function(){
+	return{
+		templateUrl:'partials/tpl/trainer_navbar.tpl.html'
+	}
+});
+
+  myDirectives.directive('playersDirective',function(){
+	return{
+		templateUrl:'partials/tpl/players_list.tpl.html'
+	}
+});

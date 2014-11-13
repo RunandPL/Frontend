@@ -1,0 +1,9 @@
+{
+  "description": "notifyME",
+  "version": "1.1",
+  "author": "Bruno Rodrigues",
+  "devDependencies": {
+    "gulp": "~3.8.9",
+    "gulp-ruby-sass": "~0.7.1"
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "notifyme",
+  "description": "notifyME",
+  "authors": [
+    "Bruno Rodrigues"
+  ],
+  "main": [
+    "assets/js/notifyme.js",
+    "assets/css/notifyme.css"
+  ],
+  "keywords": [
+    "notify"
+  ],
+  "license": "MIT",
+  "homepage": "http://brunodsgn.github.io/notifyme/",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test"
+  ],
+  "dependencies": {
+    "jquery": ">=1.11"
+  },
+  "devDependencies": {
+    "gulp": "~3.8.9",
+    "gulp-ruby-sass": "~0.7.1"
+  },
+  "_release": "c18e96e186",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "c18e96e186de0bdcdc97321f5eb353c792a6f85e"
+  },
+  "_source": "git://github.com/brunodsgn/notifyme.git",
+  "_target": "*",
+  "_originalSource": "notifyme",
+  "_direct": true
+}
