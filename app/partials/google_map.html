@@ -11,15 +11,17 @@
             bottom: 0;
             right: 0;
             left: 0;
+          margin-top: 50px;
         }
       
       #trainer_menu{
         
         margin-top: 20px;
-        margin-left: 40%;
+        margin-left: 25%;
+        width: 50%;
       }
       
-      #players_directive{
+      #dummy_map_container{
         
         display: none;
         
@@ -53,12 +55,15 @@ geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" 
 
 </div>
   
-  
   <div id="trainer_menu">
- 
      <div class="wrap" trainer-directive ></div>
-     <div class="wrap" players-directive id="players_directive"></div>
-</div>
+    <div id="dummy_map_container">
+         <div class="wrap" take-player-directive id="take_player_directive"></div>
+         <div class="wrap" players-directive id="players_directive"></div>
+        <div class="wrap" workout-details-directive id="details_directive"></div>
+         <div class="wrap" live-workouts-directive id="workouts_directive"></div> 
+      </div>
+  </div>
   
 </div>
      

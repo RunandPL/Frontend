@@ -39,3 +39,21 @@ var myDirectives = angular.module('myApp.directives', []);
 		templateUrl:'partials/tpl/players_list.tpl.html'
 	}
 });
+
+  myDirectives.directive('takePlayerDirective',function(){
+	return{
+		templateUrl:'partials/tpl/take_player.tpl.html'
+	}
+});
+
+  myDirectives.directive('liveWorkoutsDirective',function(){
+	return{
+		templateUrl:'partials/tpl/live_workouts_list.tpl.html'
+	}
+});
+
+  myDirectives.directive('workoutDetailsDirective',function(){
+	return{
+		templateUrl:'partials/tpl/workout_details.tpl.html'
+	}
+});

@@ -23,98 +23,29 @@ runAndApp.controller('TagBoardCtrl', ['$scope', function($scope) {
  }]);
 
 /*Workout Controller - provide workout details*/
+
 runAndApp.controller('WorkoutCtrl', ['$scope', function($scope) {
    $scope.header = 'Podgląd treningu';     
 }]);
 
 /*Slider Controler - provide slides content*/
 runAndApp.controller('SliderCtrl', function($scope, $http) {
-  
-  //toastr.options.positionClass = "toast-top-full-width";
-  
   $http.get('slider/slides.json').success(function(data) {
     $scope.slides = data;
   });
 });
 
-/*Google Map Controller - provide dummy Google Map*/
-runAndApp.controller('mainCtrl',['$scope','GoogleMapApi'.ns(), '$http', function($scope, GoogleMapApi, $http) {
-  
-  $scope.map = {center: {latitude:54.41321335332012, longitude:18.61210285186769}, zoom: 14, bounds: {}};
-  $scope.options = {scrollwheel: false};
-
-  $http.get('routes/dummy_route.json').success(function(data) {
-    $scope.map.polylines = data;
-    console.log(data);
-  });
-  
-   $scope.map.enable = function() {
-      $scope.map.polylines[0].editable = ! $scope.map.polylines[0].editable;
-  }
-   
-  $scope.map.saveRoute = function() {
-    alert("Mapa: " + JSON.stringify($scope.map.center));
-  }
-     
-  $scope.map.showPlayers = function() {
-    
-     $(this).notifyMe(
-        'right', // Position
-        'default', // Type
-        'Lista trenujących zawodników', // Title
-        'W tej chwili nikt nie trenuje...', // Description
-        200 // Velocity of notification
-    );
-    
-  }
-  
-   $scope.map.showConnector = function() {
-    
-     $(this).notifyMe(
-        'right', // Position
-        'default', // Type
-        'Wybierz zawodnika', // Title
-        '<div id="players_list"></div>', // Description
-        200, // Velocity of notification,
-       function(){alert("zamykam sie");}
-    );
-  
-     
-     $( "#players_list" ).append($( "#players_directive" ).show());
-     
-   
-     
-  }
-  
-  
-        /*
-        * GoogleMapApi is a promise with a
-        * then callback of the google.maps object
-        *   @pram: maps = google.maps
-        */
-        GoogleMapApi.then(function(maps) {
-              console.log("Załadowano mape.");
- 
-        });
-        
-    }]);
-
-
-
-
-
-
 /*Navbar Controler - provide menu items*/
 
 runAndApp.controller('NavbarCtrl', function ($scope, $http, $window) {
-  
   var menu_src;
   if($window.sessionStorage.getItem("user") === null) {
     menu_src = "open.json";
   } else {
     menu_src = JSON.parse($window.sessionStorage.user).role+".json"; 
   }
-  
+ 
+  /*customowe menu zależne od rodzaju uprawnien*/
   $http.get('navbar_provider/'+menu_src).success(function(data) {
       $scope.items = data;
     });
@@ -124,21 +55,3 @@ runAndApp.controller('NavbarCtrl', function ($scope, $http, $window) {
 
 
 
-runAndApp.controller('takePlayersCtrl', function ($scope, $http, $window) {
- 
-  $scope.email = "";
-  
-  $scope.sendInvitation = function() {
-    
-     toastr.warning('Nie podłączono jeszcze funkcji.', $scope.email);
-    
-  };
- 
-});
-
-runAndApp.controller('playersListCtrl', function ($scope, $http, $window) {
-  
-  $scope.data = [{"name": "Lucjan","email": "example@example"}];
-   
- 
-});

@@ -17,7 +17,6 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/tag_board', {templateUrl: 'partials/tag_board.html', controller: 'TagBoardCtrl'});
   $routeProvider.when('/show_workout', {templateUrl: 'partials/workouts.html', controller: 'WorkoutCtrl'});
   $routeProvider.when('/dummy_map', {templateUrl: 'partials/google_map.html', controller: 'WorkoutCtrl'});
-  $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'AuthCtrl'});
   $routeProvider.otherwise({redirectTo: '/tag_board'});
 
 }]);
