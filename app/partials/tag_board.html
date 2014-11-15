@@ -1,46 +1,46 @@
- <script>
-   $('#myCarousel').show();
-  </script>
+<script>
+    $('#myCarousel').show();
+</script>
 
-<h1>{{ header }}</h1>
+<h1>{{ header}}</h1>
 
 <div class="container-fluid">
-<div class="row">
-  <div class="col-md-3">
-    <!--Sidebar content-->
-
-   <span class="glyphicon glyphicon-search"> Search:</span>
-    <input ng-model="query">
-    <br/>
-    Sort by:
-    <select ng-model="orderProp">
-      <option value="name" selected="selected">Alfabetycznie</option>
-      <option value="age">Data dodania</option>
-    </select>
-
-  </div>
-  <div class="col-md-9">
-    <!--Body content-->
-
     <div class="row">
-      <div class="col-md-9">
-        
-    <ul class="workouts">
-      <li ng-repeat="workout in workouts | filter:query | orderBy:orderProp" class="thumbnail">
-        
-        <a href="#" class="thumb"><img ng-src="{{workout.img}}" style="padding: 5px;height:100px; float:left;"></a>
-        
-        <div style="margin-left: 100px;">
-        <a href="#">{{workout.name}}</a>
-        <p>{{workout.description}}</p>
-        <p>Dystans: {{workout.distance}} km</p>
-      </div>
-      </li>
-    </ul>   
-     </div>
+        <div class="col-md-3">
+            <!--Sidebar content-->
+
+            <span class="glyphicon glyphicon-search"> Search:</span>
+            <input ng-model="query">
+            <br/>
+            Sort by:
+            <select ng-model="orderProp">
+                <option value="name" selected="selected">Alfabetycznie</option>
+                <option value="age">Data dodania</option>
+            </select>
+
+        </div>
+        <div class="col-md-9">
+            <!--Body content-->
+
+            <div class="row">
+                <div class="col-md-9">
+
+                    <ul class="workouts">
+                        <li ng-repeat="workout in workouts| filter:query | orderBy:orderProp" class="thumbnail">
+
+                            <a href="#" class="thumb"><img ng-src="{{workout.img}}" style="padding: 5px;height:100px; float:left;"></a>
+
+                            <div style="margin-left: 100px;">
+                                <a href="#">{{workout.name}}</a>
+                                <p>{{workout.description}}</p>
+                                <p>Dystans: {{workout.distance}} km</p>
+                            </div>
+                        </li>
+                    </ul>   
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 </div>
 
 

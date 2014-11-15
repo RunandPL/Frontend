@@ -1,31 +1,31 @@
- <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-          <h4 class="modal-title" id="myModalLabel">Zaloguj sie</h4>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Zaloguj siê</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div>
+                        <div class="account-wall">
+
+                            <div ng-controller="AuthCtrl">
+                                <center><a href="javascript:void(0);" data-dismiss="modal" ng-click="login()" >Logowanie Google Plus</a></center>
+                            </div>
+
+                            <form class="form-signin" ng-controller="UserCtrl" ng-submit="submit()">
+                                <input type="text" class="form-control" placeholder="Email" required autofocus ng-model="user.username">
+                                <input type="password" class="form-control" placeholder="Password" required ng-model="user.password">
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj siê</button>
+
+                            </form>
+                        </div>
+                        <a href="#" class="text-center new-account">Zarejestruj siê</a>
+                    </div>
+                </div>
+
+            </div>
         </div>
-        <div class="modal-body">
-  <div class="row">
-    <div>
-      <div class="account-wall">
-       
-        <div ng-controller="AuthCtrl">
-    <center><a href="javascript:void(0);" data-dismiss="modal" ng-click="login()" >Login with Google Plus</a></center>
-  </div>
-         
-          <form class="form-signin" ng-controller="UserCtrl" ng-submit="submit()">
-            <input type="text" class="form-control" placeholder="Email" required autofocus ng-model="user.username">
-            <input type="password" class="form-control" placeholder="Password" required ng-model="user.password">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
-           
-          </form>
-        </div>
-        <a href="#" class="text-center new-account">Zarejestruj sie</a>
-      </div>
     </div>
-  
-          </div>
-      </div>
-    </div>
-  </div>
+</div>

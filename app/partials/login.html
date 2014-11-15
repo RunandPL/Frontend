@@ -1,19 +1,19 @@
 <div ng-controller="AuthCtrl">
-  <br/><br/><br/>
+    <br/><br/><br/>
     <a href="javascript:void(0);" ng-click="login()">Login with Google Plus</a>
-  </div>
+</div>
 
 
 <div ng-controller="UserCtrl">
-  <span></span>
-  <form ng-submit="submit()">
-    <input ng-model="user.username" type="text" name="user" placeholder="Username" />
-    <input ng-model="user.password" type="password" name="pass" placeholder="Password" />
-    <input type="submit" value="Login" />
-  </form>
-  
+    <span></span>
+    <form ng-submit="submit()">
+        <input ng-model="user.username" type="text" name="user" placeholder="Username" />
+        <input ng-model="user.password" type="password" name="pass" placeholder="Password" />
+        <input type="submit" value="Login" />
+    </form>
+
     <form ng-submit="test1()"><input type="submit" value="POLECENIA" /></form>
-      <form ng-submit="test2()"><input type="submit" value="ODCZYT TRAS" /></form>
-      <form ng-submit="test3()"><input type="submit" value="ZAPISANIE TRAS" /></form>
+    <form ng-submit="test2()"><input type="submit" value="ODCZYT TRAS" /></form>
+    <form ng-submit="test3()"><input type="submit" value="ZAPISANIE TRAS" /></form>
 </div>
 
