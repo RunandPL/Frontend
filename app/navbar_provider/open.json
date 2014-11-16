@@ -3,10 +3,5 @@
     "href": "#/tag_board",
     "link": "Opublikowane trasy",
     "isActive": true
-  },
-  { 
-    "href": "#/dummy_map",
-    "link": "Treningi",
-    "isActive": false
   }
 ]

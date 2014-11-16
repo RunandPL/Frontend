@@ -8,7 +8,7 @@ runAndApp.controller('takePlayersCtrl', function ($scope, $http, $window) {
 
     $scope.sendInvitation = function () {
 
-        var $data = '{"runnerUserName": ' + $scope.email + '}';
+        var $data = '{"runnerUserName": "' + $scope.email + '"}';
 
         $http.post('http://89.79.234.30:3000/api/connect/runner', $data)
                 .success(function (data, status, headers, config) {
@@ -16,7 +16,7 @@ runAndApp.controller('takePlayersCtrl', function ($scope, $http, $window) {
                 })
                 .error(function (data, status, headers, config) {
                     console.log(data);
-                    toastr.error('Nie udało sie wybrac zawodnika. Sprobuj ponownie.', $scope.email);
+                    toastr.error(data.msg, $scope.email);
                 });
     };
 

@@ -6,12 +6,7 @@
   },
   { 
     "href": "#/dummy_map",
-    "link": "Utwórz trase",
-    "isActive": false
-  },
-  { 
-    "href": "#/login",
-    "link": "Zaloguj sie",
+    "link": "Mapa",
     "isActive": false
   }
  ]

@@ -26,14 +26,20 @@
                 <div class="col-md-9">
 
                     <ul class="workouts">
-                        <li ng-repeat="workout in workouts| filter:query | orderBy:orderProp" class="thumbnail">
+                        <li ng-repeat="workout in workouts| filter:query | orderBy:orderProp" class="thumbnail" style="min-height: 110px;">
 
-                            <a href="#" class="thumb"><img ng-src="{{workout.img}}" style="padding: 5px;height:100px; float:left;"></a>
+                            <a href="#" class="thumb">
+                              <img ng-if="workout.img != null" ng-src="{{workout.img}}" style="padding: 5px;height:100px; float:left;"/>
+                              <img ng-if="workout.img == null" ng-src="/img/dummy_map.png" style="padding: 5px;height:100px; float:left;"/>
+                          </a>
 
                             <div style="margin-left: 100px;">
-                                <a href="#">{{workout.name}}</a>
+                              
+                                <a href="#">{{workout.title}}</a>
                                 <p>{{workout.description}}</p>
-                                <p>Dystans: {{workout.distance}} km</p>
+                                <p>Dystans: {{workout.length}} km</p>
+                                <p class="text-align: right;">Utworzył: {{workout.owner}}</p>
+                              
                             </div>
                         </li>
                     </ul>   

@@ -14,13 +14,12 @@ runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
                 .success(function (data, status, headers, config) {
                     $window.sessionStorage.token = data.token;
                     $window.sessionStorage.user = JSON.stringify({
-                        uid: 0,
-                        name: "dummy_user_name",
-                        mail: "dummy@mail.address",
+                        name: $scope.user.username,
+                        email: $scope.user.username,
                         role: "trainer"
                     });
 
-                    toastr.success('Witaj, ' + JSON.parse($window.sessionStorage.user).name + '!', 'Sukces!');
+                    toastr.success('Witaj, ' + JSON.parse($window.sessionStorage.user).email + '!', 'Sukces!');
                     setTimeout(function () {
                         $window.location.reload();
                     }, 1000);
@@ -40,33 +39,4 @@ runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
         delete $window.sessionStorage.user;
     }
 
-
-
-
-    $scope.test1 = function () {
-        $http({url: 'http://89.79.234.30:3000/api/connect', method: 'GET'})
-                .success(function (data, status, headers, config) {
-                    //console.log(data);
-                });
-    };
-
-    $scope.test2 = function () {
-        $http({url: 'http://89.79.234.30:3000/api/workout', method: 'GET'})
-                .success(function (data, status, headers, config) {
-                    //console.log(data);
-                });
-    };
-
-    /*{
-     route: <<value>>, // string zlozony z doubli poprzedzielanych '?'.
-     lengthTime: <<value>>,
-     burnedCalories: <<value>>,
-     speedRate: <<value>>
-     }*/
-    $scope.test3 = function () {
-        $http({url: 'http://89.79.234.30:3000/api/workout', method: 'POST'})
-                .success(function (data, status, headers, config) {
-                    //console.log(data);
-                });
-    };
 });

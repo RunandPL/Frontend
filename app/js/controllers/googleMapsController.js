@@ -17,7 +17,24 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', functi
         }
 
         $scope.map.saveRoute = function () {
-            alert("Mapa: " + JSON.stringify($scope.map.center));
+          
+          
+          
+          var new_map = {
+            "route": JSON.stringify($scope.map.polylines[0].path),
+            "description": "Mapa trenera pochodząca z zapisu.",
+            "title": "Mapa trenera",
+            "isPublic": true,
+            "length": "123"
+           }; 
+          
+          $http.post('http://89.79.234.30:3000/api/route', new_map)
+                .success(function (data, status, headers, config) {
+                    toastr.success('Zapisano pomyslnie', 'Sukces!');
+                })
+                .error(function (data, status, headers, config) {
+                    toastr.error(data.msg, 'Błąd zapisu!');
+                });      
         }
 
         $scope.map.showAllPlayers = function () {
