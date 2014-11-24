@@ -10,7 +10,7 @@ runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
             return;
         }
 
-        $http.post('http://89.79.234.30:3000/login', $scope.user)
+        $http.post('http://api.runand.greeters.pl:3500/login', $scope.user)
                 .success(function (data, status, headers, config) {
                     $window.sessionStorage.token = data.token;
                     $window.sessionStorage.user = JSON.stringify({

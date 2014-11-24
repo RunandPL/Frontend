@@ -10,7 +10,7 @@ runAndApp.controller('takePlayersCtrl', function ($scope, $http, $window) {
 
         var $data = '{"runnerUserName": "' + $scope.email + '"}';
 
-        $http.post('http://89.79.234.30:3000/api/connect/runner', $data)
+        $http.post('http://api.runand.greeters.pl:3500/api/connect/runner', $data)
                 .success(function (data, status, headers, config) {
                     toastr.success('Wysłano zaproszenie. Czekaj, aż zawodnik je potwierdzi.', $scope.email);
                 })

@@ -28,7 +28,7 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', functi
             "length": "123"
            }; 
           
-          $http.post('http://89.79.234.30:3000/api/route', new_map)
+          $http.post('http://api.runand.greeters.pl:3500/api/route', new_map)
                 .success(function (data, status, headers, config) {
                     toastr.success('Zapisano pomyslnie', 'Sukces!');
                 })

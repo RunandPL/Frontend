@@ -23,7 +23,7 @@ runAndApp.controller('AuthCtrl', ['$scope', 'GooglePlus', '$window', '$http', fu
 
                     var $params = {"username": user.email, "isTrainer": true};
 
-                    $http.post('http://89.79.234.30:3000/login/google', $params)
+                    $http.post('http://api.runand.greeters.pl:3500/login/google', $params)
                             .success(function (data, status, headers, config) {
                                 $window.sessionStorage.token = data.token;
 

@@ -7,7 +7,7 @@ runAndApp.controller('TagBoardCtrl', ['$scope', '$http', function ($scope, $http
   
   $scope.header = 'Polecane treningi';
   
-  $http.get('http://89.79.234.30:3000/route')
+  $http.get('http://api.runand.greeters.pl:3500/route')
   .success(function (data, status, headers, config) {
                     $scope.workouts = data.msg;
                 })
