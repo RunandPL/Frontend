@@ -20,7 +20,7 @@ runAndApp.controller('playersListCtrl', function ($scope, $http, $window) {
             })
             .error(function (data, status, headers, config) {
               $scope.error = true;
-                toastr.error('Nie udało się pobrać listy Twoich zawodników');
+                //toastr.error(data.msg);
                 console.log(data);
             });
 

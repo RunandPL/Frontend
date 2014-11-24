@@ -1,12 +1,16 @@
 
 <ul class="list-group" style="color: #444444" ng-controller="playersListCtrl"> 
-  <li ng-repeat="player in players" class="list-group-item" ng-if="!error"> 
-    
-    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-    
+  
+    <li ng-repeat="player in players" class="list-group-item" ng-if="!error"> 
+      <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+      {{player.username}}
+    </li>
+        
     <li ng-if="error" class="list-group-item"> 
       <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
       Nie trenujesz nikogo.
     </li>
-</li>
+  
+      
+</ul> 
   
