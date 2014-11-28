@@ -1,4 +1,8 @@
-<ul class="list-group" style="color: #444444">
+<div ng-controller="detailsCtrl">
+<ul class="list-group" style="color: #444444" >
+  <li class="list-group-item">
+    {{username}}
+  </li>
   <li class="list-group-item">
     <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
     Czas trwania: 120 min
@@ -20,4 +24,15 @@
     <span class="badge">14</span>
     Nadesłane zdjęcia:
   </li>
-</ul>
+  </ul>
+  
+   <form ng-submit="send()">
+     
+      <div class="form-group">
+        <label for="content">Tresc</label>
+          <input type="text" class="form-control" id="content" placeholder="Tresc wiadomosci" required ng-model="mail_content">
+      </div> 
+
+     <button class="btn btn-primary" type="submit">Wyslij</button>
+   </form>
+  </div>

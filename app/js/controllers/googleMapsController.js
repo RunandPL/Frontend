@@ -2,8 +2,29 @@
 
 
 /*Google Map Controller - provide dummy Google Map*/
-runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', function ($scope, GoogleMapApi, $http) {
+runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$window', '$interval', 
+                      function ($scope, GoogleMapApi, $http, $window, $interval) {
 
+        $scope.player_mail = "";               
+                        
+        var stop = $interval(function(){
+          
+         $http.get('http://api.runand.greeters.pl:3500/api/live')
+          .success(function (data, status, headers, config) {
+           $window.sessionStorage.live = JSON.stringify(data.msg);
+            console.log($window.sessionStorage.live);
+          })
+          .error(function (data, status, headers, config) {
+            console.log(data);
+          });
+          
+        },5000);
+                        
+        $scope.$on('$destroy', function() {
+          $interval.cancel(stop);
+        });                
+                        
+  
         $scope.map = {center: {latitude: 54.41321335332012, longitude: 18.61210285186769}, zoom: 14, bounds: {}};
         $scope.options = {scrollwheel: false};
 
@@ -17,15 +38,13 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', functi
         }
 
         $scope.map.saveRoute = function () {
-          
-          
-          
+ 
           var new_map = {
             "route": JSON.stringify($scope.map.polylines[0].path),
-            "description": "Mapa trenera pochodząca z zapisu.",
+            "description": "Mapa trenera stworzona w aplikacji trenerskiej.",
             "title": "Mapa trenera",
             "isPublic": true,
-            "length": "123"
+            "length": "0"
            }; 
           
           $http.post('http://api.runand.greeters.pl:3500/api/route', new_map)
@@ -112,6 +131,21 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', functi
             $('#check_player_button').prop('disabled', true);
         }
 
+        $scope.create_notifyme = function ($title, $directive_name, $button_id, $destination_div, $source_div) {
+            $(this).notifyMe(
+                    'right',
+                    'default',
+                    $title,
+                    '<div id="'+$destination_div+'"></div>',
+                    200, // Velocity of notification
+                    function () {
+                        $("#dummy_map_container").append($("#"+$source_div).hide());
+                        $('#'+$button_id).prop('disabled', false);
+                    }
+            );
+            $("#"+$destination_div).append($("#"+$source_div).show());
+            $('#'+$button_id).prop('disabled', true);
+        }
 
         /*
          * GoogleMapApi is a promise with a
