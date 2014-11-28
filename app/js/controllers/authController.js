@@ -1,6 +1,7 @@
 'use strict';
 
 runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
+    $scope.if_registration = false;
     $scope.user = {username: 'user1@email.com', password: 'test'};
     $scope.message = '';
     $scope.submit = function () {
@@ -9,6 +10,24 @@ runAndApp.controller('UserCtrl', function ($scope, $http, $window) {
             toastr.warning('Nie możesz zalogowac sie dwukrotnie.', 'Błąd logowania!');
             return;
         }
+      
+      if($scope.if_registration) {
+        
+        var $params = {
+          username: $scope.user.username,
+          password: $scope.user.password,
+          isTrainer: true
+        };
+        
+          $http.post('http://api.runand.greeters.pl:3500/register', $params)
+                .success(function (data, status, headers, config) {
+                  toastr.success(data.msg, 'Sukces!');
+                })
+                .error(function (data, status, headers, config) { 
+                    toastr.error('Nie udało sie zarejestrowac nowego konta.', 'Błąd!');
+                  return;
+                });
+      }    
 
         $http.post('http://api.runand.greeters.pl:3500/login', $scope.user)
                 .success(function (data, status, headers, config) {

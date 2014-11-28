@@ -34,9 +34,8 @@
                           </a>
 
                             <div style="margin-left: 100px;">
-                              
-                                <a href="#">{{workout.title}}</a>
-                                <p>{{workout.description}}</p>
+                                <a ng-href="#/dummy_map/{{workout.owner}}">Tytuł: {{workout.title}}</a>
+                                <p ng-bind="">{{workout.description}}</p>
                                 <p>Dystans: {{workout.length}} km</p>
                                 <p class="text-align: right;">Utworzył: {{workout.owner}}</p>
                               

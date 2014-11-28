@@ -2,9 +2,12 @@
 
 
 /*Google Map Controller - provide dummy Google Map*/
-runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$window', '$interval', 
-                      function ($scope, GoogleMapApi, $http, $window, $interval) {
+runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$window', '$interval', '$routeParams', 
+                      function ($scope, GoogleMapApi, $http, $window, $interval, $routeParams) {
 
+                        alert($routeParams.player);
+
+                        
         $scope.player_mail = "";               
                         
         var stop = $interval(function(){

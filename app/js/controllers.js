@@ -22,11 +22,7 @@ runAndApp.controller('TagBoardCtrl', ['$scope', '$http', function ($scope, $http
                 });
     }]);
 
-/*Workout Controller - provide workout details*/
 
-runAndApp.controller('WorkoutCtrl', ['$scope', function ($scope) {
-        $scope.header = 'Podgląd treningu';
-    }]);
 
 /*Slider Controler - provide slides content*/
 runAndApp.controller('SliderCtrl', function ($scope, $http) {
