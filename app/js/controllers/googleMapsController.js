@@ -5,7 +5,7 @@
 runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$window', '$interval', '$routeParams', 
                       function ($scope, GoogleMapApi, $http, $window, $interval, $routeParams) {
 
-                        alert($routeParams.player);
+         $scope.player = "anonim.";
 
                         
         $scope.player_mail = "";               
@@ -28,12 +28,54 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
         });                
                         
   
-        $scope.map = {center: {latitude: 54.41321335332012, longitude: 18.61210285186769}, zoom: 14, bounds: {}};
+        $scope.map = {center: {latitude: 54.41321335332012, longitude: 18.61210285186769}, zoom: 12, bounds: {}};
         $scope.options = {scrollwheel: false};
 
         $http.get('routes/dummy_route.json').success(function (data) {
             $scope.map.polylines = data;
             console.log(data);
+          
+          //nadpisanie trasy, gdy trenuje zawodnik
+          
+          if($routeParams.player !== undefined) {
+            
+            var xyz = JSON.parse(JSON.parse($window.sessionStorage.live)[0].route);
+            
+            //$scope.map.polylines[0] = JSON.parse($window.sessionStorage.live)
+            
+            var new_path = [];
+            for (var i = 0; i < xyz.length; i++) { 
+                var item = {
+                "latitude": xyz[0].x,
+                "longitude": xyz[0].y
+              }
+              new_path[i] = item;
+            }
+            
+            if(new_path.length == 1) {
+              
+              new_path[1] = new_path[0];
+              
+            }
+            
+           // console.log($scope.map.polylines[0].path);
+           // console.log(new_path);
+            
+            $scope.map.polylines[0].path = new_path;
+            
+            
+          }  else {
+            
+              $interval.cancel(stop);
+            
+          }
+           
+          
+          
+          
+          
+          
+          
         });
 
         $scope.map.enable = function () {
