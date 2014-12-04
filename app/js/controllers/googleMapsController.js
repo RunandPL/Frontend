@@ -1,12 +1,11 @@
 'use strict';
 
 
-/*Google Map Controller - provide dummy Google Map*/
+/*Google Map Controller - provide Google Map*/
 runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$window', '$interval', '$routeParams', 
                       function ($scope, GoogleMapApi, $http, $window, $interval, $routeParams) {
 
-         $scope.player = "anonim.";
-
+        $scope.player = $routeParams.player;
                         
         $scope.player_mail = "";               
                         
@@ -15,7 +14,7 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
          $http.get('http://api.runand.greeters.pl:3500/api/live')
           .success(function (data, status, headers, config) {
            $window.sessionStorage.live = JSON.stringify(data.msg);
-            console.log($window.sessionStorage.live);
+            //console.log($window.sessionStorage.live);
           })
           .error(function (data, status, headers, config) {
             console.log(data);
@@ -33,12 +32,12 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
 
         $http.get('routes/dummy_route.json').success(function (data) {
             $scope.map.polylines = data;
-            console.log(data);
+            //console.log(data);
           
           //nadpisanie trasy, gdy trenuje zawodnik
           
           if($routeParams.player !== undefined) {
-            
+
             var xyz = JSON.parse(JSON.parse($window.sessionStorage.live)[0].route);
             
             //$scope.map.polylines[0] = JSON.parse($window.sessionStorage.live)
@@ -59,7 +58,7 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
             }
             
            // console.log($scope.map.polylines[0].path);
-           // console.log(new_path);
+            console.log(new_path);
             
             $scope.map.polylines[0].path = new_path;
             

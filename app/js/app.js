@@ -9,7 +9,6 @@ var myApp = angular.module('myApp', [
     'myApp.controllers',
     'google-maps'.ns(),
     'googleplus'
-
 ]);
 
 myApp.config(['$routeProvider', function ($routeProvider) {
