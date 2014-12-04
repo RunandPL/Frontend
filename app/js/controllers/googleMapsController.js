@@ -2,9 +2,10 @@
 
 
 /*Google Map Controller - provide Google Map*/
-runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$window', '$interval', '$routeParams', 
-                      function ($scope, GoogleMapApi, $http, $window, $interval, $routeParams) {
-
+runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$window', '$interval', '$routeParams', 'myRoute', 
+                      function ($scope, GoogleMapApi, $http, $window, $interval, $routeParams, myRoute) {
+             
+                        
         $scope.player = $routeParams.player;
                         
         $scope.player_mail = "";               
@@ -29,10 +30,11 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
   
         $scope.map = {center: {latitude: 54.41321335332012, longitude: 18.61210285186769}, zoom: 12, bounds: {}};
         $scope.options = {scrollwheel: false};
-
+                        
         $http.get('routes/dummy_route.json').success(function (data) {
             $scope.map.polylines = data;
             //console.log(data);
+          
           
           //nadpisanie trasy, gdy trenuje zawodnik
           
@@ -69,11 +71,15 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
             
           }
            
-          
-          
-          
-          
-          
+
+          /*Zapisywanie trasy, jesli to trasa publiczna*/
+          if(myRoute.isEmpty() === false) {
+            
+            $scope.map.polylines[0].path = myRoute.getPath();
+            
+            myRoute.clear();
+            
+          }
           
         });
 
@@ -83,11 +89,16 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
 
         $scope.map.saveRoute = function () {
  
+         var points = $scope.map.polylines[0].path;
+         
+          
+          points = myRoute.parsePoints(points);
+          
+          
           var new_map = {
-            "route": JSON.stringify($scope.map.polylines[0].path),
+            "route": JSON.stringify(points),
             "description": "Mapa trenera stworzona w aplikacji trenerskiej.",
             "title": "Mapa trenera",
-            "isPublic": true,
             "length": "0"
            }; 
           

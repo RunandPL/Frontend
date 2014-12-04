@@ -3,7 +3,7 @@ var runAndApp = angular.module('myApp.controllers', []);
 
 /* Controllers */
 
-runAndApp.controller('TagBoardCtrl', ['$scope', '$http', function ($scope, $http) {
+runAndApp.controller('TagBoardCtrl', ['$scope', '$http', 'myRoute', function ($scope, $http, myRoute) {
   
   $scope.header = 'Polecane treningi';
   
@@ -20,6 +20,20 @@ runAndApp.controller('TagBoardCtrl', ['$scope', '$http', function ($scope, $http
                     }); 
                 
                 });
+  
+    $scope.setRoute = function(id) {
+      for(var i=0;i<$scope.workouts.length;i++) {
+       
+        if($scope.workouts[i].id == id) {
+          myRoute.setRouteObject($scope.workouts[i]);
+        }
+        
+        
+      }
+     
+    };
+  
+  
     }]);
 
 
