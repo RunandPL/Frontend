@@ -16,6 +16,53 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
           .success(function (data, status, headers, config) {
            $window.sessionStorage.live = JSON.stringify(data.msg);
             //console.log($window.sessionStorage.live);
+            
+            
+            
+            
+             if($routeParams.player !== undefined) {
+
+            var xyz = JSON.parse(JSON.parse($window.sessionStorage.live)[0].route);
+            
+            //$scope.map.polylines[0] = JSON.parse($window.sessionStorage.live)
+            
+            var new_path = [];
+            
+            
+            
+            for (var i = 0; i < xyz.length; i++) { 
+                var item = {
+                "latitude": xyz[i].x,
+                "longitude": xyz[i].y
+              }
+                
+              console.log(item);  
+                
+              new_path[i] = item;
+            }
+            
+            
+            
+            if(new_path.length == 1) {
+              
+              new_path[1] = new_path[0];
+              
+            }
+            
+           // console.log($scope.map.polylines[0].path);
+            console.log(new_path);
+            
+            $scope.map.polylines[0].path = new_path;
+            
+            
+          }  else {
+            
+              $interval.cancel(stop);
+            
+          }
+            
+            
+            
           })
           .error(function (data, status, headers, config) {
             console.log(data);
@@ -45,13 +92,21 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
             //$scope.map.polylines[0] = JSON.parse($window.sessionStorage.live)
             
             var new_path = [];
+            
+            
+            
             for (var i = 0; i < xyz.length; i++) { 
                 var item = {
-                "latitude": xyz[0].x,
-                "longitude": xyz[0].y
+                "latitude": xyz[i].x,
+                "longitude": xyz[i].y
               }
+                
+              console.log(item);  
+                
               new_path[i] = item;
             }
+            
+            
             
             if(new_path.length == 1) {
               
