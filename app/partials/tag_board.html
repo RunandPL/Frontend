@@ -30,14 +30,14 @@
                     <ul class="workouts">
                         <li ng-repeat="workout in workouts| filter:query | orderBy:orderProp" class="thumbnail" style="min-height: 110px;">
 
-                            <a href="#" class="thumb">
+                            <a ng-href="#/dummy_map" ng-click="setRoute(workout.id)" class="thumb">
                               <img ng-if="workout.img != null" ng-src="{{workout.img}}" style="padding: 5px;height:100px; float:left;"/>
                               <img ng-if="workout.img == null" ng-src="/img/dummy_map.png" style="padding: 5px;height:100px; float:left;"/>
                           </a>
 
                             <div style="margin-left: 100px;">
                                 <a ng-href="#/dummy_map" ng-click="setRoute(workout.id)">
-                                  Tytuł: {{workout.title}}
+                                  <b><i>{{workout.title}}</b></i>
                               </a>
                                 <p ng-bind="workout.description"></p>
                                 <p ng-if="workout.length">Dystans: {{workout.length}} m</p>
