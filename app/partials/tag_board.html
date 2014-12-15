@@ -2,21 +2,23 @@
     $('#myCarousel').show();
 </script>
 
-<h1>{{ header}}</h1>
+<h1 style="margin-left: 10px;">{{ header}}</h1>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
             <!--Sidebar content-->
 
-            <span class="glyphicon glyphicon-search"> Search:</span>
+            <span class="glyphicon glyphicon-search">&nbsp;</span>Szukaj:
             <input ng-model="query">
-            <br/>
-            Sort by:
-            <select ng-model="orderProp">
+            <br/><br/>
+            <div style="margin-left: 28px;">
+              Sortuj:
+            <select ng-model="orderProp" style="margin-left: 6px;">
                 <option value="name" selected="selected">Alfabetycznie</option>
                 <option value="age">Data dodania</option>
             </select>
+              </div>
 
         </div>
         <div class="col-md-9">
@@ -38,7 +40,7 @@
                                   Tytuł: {{workout.title}}
                               </a>
                                 <p ng-bind="workout.description"></p>
-                                <p>Dystans: {{workout.length}} km</p>
+                                <p ng-if="workout.length">Dystans: {{workout.length}} m</p>
                                 <p class="text-align: right;">Utworzył: {{workout.owner}}</p>
                               
                             </div>

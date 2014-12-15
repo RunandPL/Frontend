@@ -2,14 +2,15 @@
     $('#myCarousel').show();
 </script>
 
-<h1>{{ header }}</h1>
+<h1 style="margin-left: 22px;">{{ header }}</h1>
 
-<div class="row">
+<div class="row" style="margin-left: 10px;">
   
     <div class="col-sm-6 col-md-4" ng-repeat="w in workouts">
         <div class="thumbnail">
             <div class="caption">
-                <h3 ng-bind="w.username"></h3>
+                <h3 ng-bind="w.name"></h3>
+                <h5 ng-bind="w.username"></h3>
                 <p ng-bind="w.startTime"></p>
                 <p ng-bind="w.description"></p>
                 <a ng-href="#/dummy_map/{{w.username}}" class="btn btn-primary pull-right" role="button">Podgląd</a>

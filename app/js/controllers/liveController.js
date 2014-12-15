@@ -6,11 +6,13 @@ runAndApp.controller('WorkoutCtrl', ['$scope','$http', function ($scope,$http) {
   
   $scope.workouts = [
     {
-      "username":"user1@email.com",
+      "name": "waldemar23",
+      "username":"waldemar23@email.com",
       "description":"Trening kondycyjny."
     },
     {
-      "username":"user2@email.com",
+      "name": "easy_run",
+      "username":"easy_run@email.com",
       "description":"Drugi dzisiejszy trening interwałowy."
     }
   ];
@@ -19,6 +21,10 @@ runAndApp.controller('WorkoutCtrl', ['$scope','$http', function ($scope,$http) {
           .success(function (data, status, headers, config) {
             if(data.msg.length > 0) {
               $scope.workouts = data.msg;
+              for(var i =0 ; i< $scope.workouts.length ; i++) {
+                var j = $scope.workouts[i].username.indexOf("@");
+                $scope.workouts[i].name = $scope.workouts[i].username.substring(0, j);
+              }
             }
             
           })
@@ -26,4 +32,6 @@ runAndApp.controller('WorkoutCtrl', ['$scope','$http', function ($scope,$http) {
             console.log(data.msg);
           });
  
+
+  
     }]);

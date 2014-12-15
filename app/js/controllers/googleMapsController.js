@@ -8,7 +8,9 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
                         
         $scope.player = $routeParams.player;
                         
-        $scope.player_mail = "";               
+        $scope.player_mail = "";  
+                        
+        $scope.show_details = false;                
                         
         var stop = $interval(function(){
           
@@ -22,6 +24,8 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
             
              if($routeParams.player !== undefined) {
 
+               $scope.show_details = true; 
+               
             var xyz = JSON.parse(JSON.parse($window.sessionStorage.live)[0].route);
             
             //$scope.map.polylines[0] = JSON.parse($window.sessionStorage.live)
@@ -87,6 +91,8 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
           
           if($routeParams.player !== undefined) {
 
+            $scope.show_details = true; 
+            
             var xyz = JSON.parse(JSON.parse($window.sessionStorage.live)[0].route);
             
             //$scope.map.polylines[0] = JSON.parse($window.sessionStorage.live)
@@ -123,7 +129,7 @@ runAndApp.controller('mainCtrl', ['$scope', 'GoogleMapApi'.ns(), '$http', '$wind
           }  else {
             
               $interval.cancel(stop);
-            
+              $scope.show_details = false; 
           }
            
 
